@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Средневековый Градостроитель</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="tabs">
+  <button data-tab="build" class="active">СТРОИТЕЛЬСТВО</button>
+  <button data-tab="science">НАУКИ</button>
+  <button data-tab="settings">НАСТРОЙКИ</button>
+</div>
+
+<div class="panel" id="panel-build">
+  <h1>СТРОИТЕЛЬСТВО</h1>
+  <button class="btn active" data-tool="none"><canvas data-thumb="none" width="64" height="64"></canvas><span class="label">ОСМОТР / КОМАНДЫ</span></button>
+  <button class="btn" data-tool="house"><canvas data-thumb="house" width="64" height="64"></canvas><span class="label">ДОМИК<span class="cost">[W]10 [S]5</span></span></button>
+  <button class="btn" data-tool="farm"><canvas data-thumb="farm" width="64" height="64"></canvas><span class="label">ОГОРОД<span class="cost">Бесплатно</span></span></button>
+  <button class="btn" data-tool="mill"><canvas data-thumb="mill" width="64" height="64"></canvas><span class="label">МЕЛЬНИЦА<span class="cost">[W]30 [S]10</span></span></button>
+  <button class="btn" data-tool="lumber"><canvas data-thumb="lumber" width="64" height="64"></canvas><span class="label">ЛЕСОПИЛКА<span class="cost">[W]20</span></span></button>
+  <button class="btn" data-tool="quarry"><canvas data-thumb="quarry" width="64" height="64"></canvas><span class="label">КАМЕНОЛОМНЯ<span class="cost">[W]25</span></span></button>
+<button class="btn" data-tool="laboratory"><canvas data-thumb="laboratory" width="64" height="64"></canvas><span class="label">ЛАБОРАТОРИЯ<span class="cost">[W]40 [S]40</span></span></button>
+  <button class="btn" data-tool="fisher" id="btn-fisher" style="display:none"><canvas data-thumb="fisher" width="64" height="64"></canvas><span class="label">ДОМИК РЫБАКА<span class="cost">[W]15 [S]5</span></span></button>
+  <button class="btn" data-tool="warehouse"><canvas data-thumb="warehouse" width="64" height="64"></canvas><span class="label">СКЛАД<span class="cost">[W]50 [S]20</span></span></button>
+  <button class="btn" data-tool="tower"><canvas data-thumb="tower" width="64" height="64"></canvas><span class="label">ВОЕН. БАШНЯ<span class="cost">[W]25 [S]50</span></span></button>
+  <button class="btn" data-tool="remove"><canvas data-thumb="remove" width="64" height="64"></canvas><span class="label">СНЕСТИ</span></button>
+  <div id="res">
+    <div>[W] ДЕРЕВО: <b id="wood">100</b> / <b id="max-wood">200</b></div>
+    <div>[S] КАМЕНЬ: <b id="stone">50</b> / <b id="max-stone">200</b></div>
+    <div>[G] ПШЕНИЦА: <b id="wheat">0</b> / <b id="max-wheat">200</b></div>
+    <div>[F] ЕДА: <b id="food">50</b> / <b id="max-food">200</b></div>
+    <div>[P] ЖИТЕЛИ: <b id="pop">0</b></div>
+    <div>[N] НАУКА: <b id="science">0</b></div>
+  </div>
+</div>
+
+<div class="panel hidden" id="panel-science">
+  <h1>НАУКИ</h1>
+  <div class="sci-grid" id="sci-grid"></div>
+</div>
+
+<div class="panel hidden" id="panel-settings">
+  <h1>НАСТРОЙКИ</h1>
+  <div class="slider-row"><label>Звуки</label><input type="range" id="sfx-vol" min="0" max="100" value="70"><span class="val" id="sfx-val">70</span></div>
+  <div class="slider-row"><label>Музыка</label><input type="range" id="music-vol" min="0" max="100" value="30"><span class="val" id="music-val">30</span></div>
+  <p style="font-size:11px;opacity:.7;margin-top:14px">Изменения применяются мгновенно.</p>
+</div>
+
+<div id="timeCtrl">
+  <button data-speed="0" title="Пауза">⏸</button>
+  <button data-speed="1" class="active" title="Обычно">▶</button>
+  <button data-speed="3" title="Ускорить">&gt;</button>
+</div>
+
+<div id="hint">ЛКМ — строить/выделять · ПКМ — отмена/закрыть верстак · Колесо — зум · Shift+ЛКМ / СКМ — панорама</div>
+<div id="tooltip"></div>
+<canvas id="game"></canvas>
+
+<script src="js/config.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/map.js"></script>
+<script src="js/buildings.js"></script>
+<script src="js/villagers.js"></script>
+<script src="js/economy.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/input.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
